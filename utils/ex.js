@@ -5,7 +5,6 @@ const CODE = {
     USER_LOGIN_ERROR: 30001,
     BUSINESS_ERROR: 40001,
     AUTH_ERROR: 50001,
-
 }
 
 
@@ -27,7 +26,7 @@ module.exports = {
             code, data, msg
         }
     },
-    fail(msg='', code=CODE.BUSINESS_ERROR){
+    fail(msg='', code=CODE.BUSINESS_ERROR,data=''){
         return {
             code, data, msg
         }
