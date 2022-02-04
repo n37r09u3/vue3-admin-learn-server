@@ -35,8 +35,21 @@ app.use(async (ctx, next) => {
 
 // routes
 const router = require('koa-router')()
-
+const jwt = require('jsonwebtoken')
 router.prefix('/api')
+
+router.get('/leave/count',(ctx)=>{
+  const token = ctx.request.header.authorization.split(' ')[1]
+  const payload = jwt.verify(token, 'vue3')
+
+  ctx.body = payload
+})
+router.get('/menu/list',()=>{
+
+})
+
+
+
 router.use(users.routes(), users.allowedMethods())
 app.use(router.routes(), router.allowedMethods())
 
