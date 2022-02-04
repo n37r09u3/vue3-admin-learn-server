@@ -18,12 +18,12 @@ router.post('/login', async ctx => {
         const res = await User.findOne({
             userName,
             userPwd
-        })
+        },'userName userEmail')
          if (res) {
             const data = res._doc
             const token = jwt.sign({
                 data: data,
-            }, 'vue3', {expiresIn: 3000})
+            }, 'vue3', {expiresIn: '1h'})
             ctx.body = utils.success({...data, token})
         } else {
             ctx.body = utils.fail('账号或密码不正确')
